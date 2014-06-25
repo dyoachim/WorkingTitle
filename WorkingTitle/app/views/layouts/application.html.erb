@@ -8,9 +8,6 @@
 </head>
 <body>
   <% if logged_in? %>
-    <!-- <form action="/logout" method="get">
-      <input type="submit" value="Logout">
-    </form> -->
     <%= form_tag('/logout') do %>
       <%= submit_tag "Logout" %>
     <% end %>
@@ -21,7 +18,16 @@
       <%= submit_tag "Login" %>
     <% end %>
   <% end %>
+
   <a href="/users/new">New User?</a>
+
+	<nav>
+		<ul>
+			<li><%= link_to 'Home', root_path %></li>
+			<li><%= render 'shared/search' %></li>
+			<li><%= link_to current_user.first_name, user_path(current_user) %></li>
+		</ul>
+	</nav>
   <%= yield %>
 </body>
 </html>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :users
+  resources :books
 
   root 'welcome#index'
   post '/login' => 'sessions#login'
