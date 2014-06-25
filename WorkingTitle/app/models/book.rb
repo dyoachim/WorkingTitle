@@ -1,9 +1,9 @@
+require 'CSV'
+
 class Book < ActiveRecord::Base
 	has_many :votes
 	has_many :comments
 	belongs_to :user
-
-	private
 
 	def calculate_reading_level(avg_words_per_sentence, avg_syllables_in_words)
 		((avg_words_per_sentence * 0.39) + (avg_syllables_in_words * 11.8)) - 15.59
@@ -16,7 +16,7 @@ class Book < ActiveRecord::Base
 			t.read.gsub(/[\/!@#$%^&*()1234567890\[\]|'":;<>?`~+=-]/, "").split(".").each do |sentence|
 				sentences << sentence.split(" ")
 			end
-			
+
 			sentence_length_sum = 0
 			sentences.each do |sentence_array|
 				sentence_length_sum += sentence_array.length
@@ -27,12 +27,8 @@ class Book < ActiveRecord::Base
 
 	def avg_word_length
 		File.open(self.title) do |t|
-		  # array of words
 			text = t.read.gsub(/[,.\/!@#$%^&*()1234567890\[\]|'":;<>?`~+=-]/, "")
-			letter_count = text.chars.length
-			word_count = text.split(" ").length
-
-			letter_count / word_count
+			text.chars.length / text.split(" ").length
 		end
 	end
 
@@ -41,21 +37,20 @@ class Book < ActiveRecord::Base
 		  # array of words
 			words = t.read.downcase.gsub(/[,.\/!@#$%^&*()_1234567890\[\]|'":;<>?`~+=]/, "").split(" ")
 			
-			# returns [word,# of occurrences]
+			# chunked_words == [[word,# of occurences],[word,# of occurences]...] in desc order of occurences
 			chunked_words = []
 			words.sort.chunk {|word| word }.each {|word, chunk| chunked_words << [word, chunk.length]}
 			chunked_words.sort_by! {|chunk| chunk[1] }
 			chunked_words = chunked_words.sort {|x,y| y[1] <=> x[1]}
 
 			# put chunks into csv file
-			CSV.open("test.txt", "w") do |csv|
+			CSV.open("test.csv", "w") do |csv|
 				chunked_words.each do |chunk|
 					csv << chunk
 				end
 			end
 		end
 	end
-
 end
 
 
