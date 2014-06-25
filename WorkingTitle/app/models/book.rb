@@ -30,7 +30,7 @@ class Book < ActiveRecord::Base
 	end
 
 	def avg_syllable_length
-	  File.open("../app/kafka.txt") do |t|
+	  File.open(self.raw_file_path) do |t|
 	    words = t.read.downcase.gsub(/[,.\/!@#$%^&*()_1234567890\[\]|'":;<>?`~+=]/, "").split(" ").reject {|word| ["a","the","to","he",'of', 'his', 'was', 'in', 'it', 'had', 'that', 'and', 'as', 'with', 'she', 'not', 'for', 'him', 'would', 'at', 'but', 'on', 'they', 'all', 'this', 'be', 'from', 'if', 'or', 'could', 'have', 'so', '-', 'by', 'than', 'which','an', 'is'].include?(word)} 
 	    words.inject(0.0) {|syllable_sum, word| syllable_sum + word.syllable_count } / words.length
 	  end
@@ -48,7 +48,7 @@ class Book < ActiveRecord::Base
 	    chunked_words = chunked_words.sort {|x,y| y[1] <=> x[1]}
 
 	    # put chunks into csv file
-	    CSV.open("test.csv", "w") do |csv|
+	    CSV.open(self.parsed_file_path, "w") do |csv|
 	      chunked_words.each do |chunk|
 	        csv << chunk
 	      end
