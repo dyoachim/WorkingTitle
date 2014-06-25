@@ -1,7 +1,11 @@
-class BookssController < ApplicationController
+class BooksController < ApplicationController
+
+	def all
+		@books = Book.search(params[:search])
+	end
 
 	def index
-		@books = Book.search(params[:search])
+		@books = Book.find_by_user_id(params[:user_id])
 	end
 
 	def new
@@ -10,10 +14,11 @@ class BookssController < ApplicationController
 
 	def create
 		@book = Book.new(params[:book])
+		@book.user_id = params[:user_id]
 		if @book.save
-			redirect_to book_path()
+			redirect_to user_book_path(params[:user_id], @book)
 		else
-			render new_book_path
+			render new_user_book_path(params[:user_id])
 		end
 	end
 
