@@ -1,0 +1,12 @@
+<%= form_for @book do |f| %>
+	<%= f.label :title %>
+	<%= f.text_field :title, placeholder: "Title" %><br>
+
+	<%= f.label :author %>
+	<%= f.password_field :author, placeholder: "Author" %><br>
+
+	<%= f.label :raw_file_path %>
+	<%= f.file_field :raw_file_path %><br>
+
+	<%= f.submit%>
+<% end %>
