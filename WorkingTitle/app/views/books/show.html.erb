@@ -1,22 +1,32 @@
-<h1><%= @book.title %></h1>
-<h4><%= @book.author %></h4>
+<header>
+	<h1><%= @book.title %></h1>
+	<h4><%= @book.author %></h4>
+</header>
 
 
 <div class="d3_bubble">THIS IS WHERE THE D3 GOES</div>
 
-<h2>Stats</h2>
-<!-- <ul>
-	<li>Reading Level: <%# @book.reading_level %></li>
-	<li>Total Word Count: <%# @book.word_count %></li>
-	<li>Average Word Length: <%# @book.avg_word_length %></li>
-	<li>Average Number of Syllables Per Word: <%# @book.avg_syllable_length %></li>
-	<li>Average Sentence Length: <%# @book.avg_sentence_length %></li>
-</ul>
- -->
-<h2>Comments</h2>
-<ul>
-<% @comments.each do |comment| %>
-	<% user = User.find(commenter_id) %>
-	<li><%= comment.comment_text %></li>
-<% end %>
-</ul>
+<section>
+	<h2>Stats</h2>
+	<ul>
+		<li>Reading Level: <%= @book.reading_level.floor(1) %></li><br>
+		<li>Total Word Count: <%= @book.word_count %></li><br>
+		<li>Average Word Length: <%= @book.avg_word_length.floor(2) %></li><br>
+		<li>Average Number of Syllables Per Word: <%= @book.avg_syllable_length.floor(2) %></li><br>
+		<li>Average Sentence Length: <%= @book.avg_sentence_length.floor(2) %></li>
+	</ul>
+</section>
+
+<section>
+	<h2>Comments</h2>
+	<%= render 'commentform' %>
+	<ul>
+	<% @comments.each do |comment| %>
+		<% user = User.find(comment.commenter_id) %>
+		<li>
+			<dl><%= user.first_name %> <%= user.last_name %></dl>
+			<dd><%= comment.comment_text %></dd>
+		</li><br>
+	<% end %>
+	</ul>
+</section>
