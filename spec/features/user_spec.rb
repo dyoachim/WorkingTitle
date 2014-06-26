@@ -7,7 +7,7 @@ feature 'User browsing the website' do
       fill_in 'user[last_name]', with: "Y"
       fill_in 'user[email]', with: "dan@dan.com"
       fill_in 'user[password]', with: "password"
-      click_button 'Create User'
+      click_button 'Join'
       expect(User.all.last.first_name).to eq 'Dan'
     end
 
@@ -15,7 +15,7 @@ feature 'User browsing the website' do
       @user = User.create(first_name: "Dan", last_name: "Y", email: 'dan@dan.com', password: "password")
       visit edit_user_path(@user)
       fill_in 'user[first_name]',   with: "Daniel"
-      click_button 'Update User'
+      click_button 'Update'
       expect(User.find(@user.id).first_name).to eq 'Daniel'
     end
 
