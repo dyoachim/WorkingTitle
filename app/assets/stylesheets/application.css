@@ -15,14 +15,28 @@
  */
 body {
   margin: 0;
+  font-size: 1.2em;
+}
+
+.d3_bubble {
+  width: 55%;
+  height: 450px;
+  background-color: orange;
 }
 
 .content {
   margin: 8px;
+  width: 100%;
 }
 
 .user_form {
   text-align: center;
+}
+
+.book_stats {
+  margin-left: 60px;
+  text-align: center;
+  height: 450px;
 }
 
 nav {
@@ -30,7 +44,7 @@ nav {
   padding-bottom: 0.3em;
 }
 
-nav span {
+span {
   font-size: 2.2em;
   padding-left: 0.2em;
 }
@@ -44,7 +58,16 @@ nav a:hover {
   color: #53DEFB;
 }
 
-li {
+ul {
+  margin: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+}
+
+section {
   display: inline-block;
 }
 
@@ -54,18 +77,22 @@ li {
   float: right;
 }
 
-.clearfix {
-  clear:both;
-}
+@media (max-width: 400px) {
+  html {background: red;}
 
-@media (max-width: 320px) {
-  html {
-    background: red;
+  .d3_bubble {
+    width: 95%;
+    margin: 0 auto;
   }
 }
 
 @media (min-width: 401px) and (max-width: 800px) {
   html { background: green; }
+
+  .d3_bubble {
+    width: 95%;
+    margin: 0 auto;
+  }
 }
 
 @media (min-width: 801px) {
