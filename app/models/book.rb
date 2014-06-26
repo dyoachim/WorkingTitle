@@ -72,7 +72,7 @@ class Book < ActiveRecord::Base
 	    chunked_words = chunked_words.sort {|x,y| y[1] <=> x[1]}
 
 	    # put chunks into csv file
-	    CSV.open(self.parsed_file_path, "w") do |csv|
+	    CSV.open(self.parsed_file_path, "w", write_headers: true, headers: ["name", "count"]) do |csv|
 	      chunked_words.each do |chunk|
 	        csv << chunk
 	      end

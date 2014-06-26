@@ -48,11 +48,23 @@ describe Book do
 
 	describe '#parse_into_csv' do
 		it 'parses raw text into a csv == |name,count|' do
-
+			book.parse_into_csv
+			text = ""
+			File.open("#{Rails.root}/public/p-test-book.txt") do |t|
+				text = t.read
+			end
+			
+			expect(text[11..14]).to eq("is,2")
 		end
 
 		it 'should have headers' do 
-
+			book.parse_into_csv
+			text = ""
+			File.open("#{Rails.root}/public/p-test-book.txt") do |t|
+				text = t.read
+			end
+			
+			expect(text[0..9]).to eq("name,count")
 		end
 	end
 end
