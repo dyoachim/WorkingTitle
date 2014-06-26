@@ -5,7 +5,6 @@ class Book < ActiveRecord::Base
 	has_many :comments
 	belongs_to :user
 
-
 	before_save :init
 
 	def init
@@ -18,13 +17,12 @@ class Book < ActiveRecord::Base
 		self.reading_level = get_reading_level
 	end
 
-
 	def get_raw_file_path
 		"#{Rails.root}/public/#{self.title.parameterize}.txt"
 	end
 
 	def get_parsed_file_path
-		"#{Rails.root}/public/#{self.title.parameterize}.txt"
+		"#{Rails.root}/public/p-#{self.title.parameterize}.txt"
 	end
 
 	def get_word_count
@@ -47,7 +45,7 @@ class Book < ActiveRecord::Base
 	def get_avg_word_length
 	  File.open(self.raw_file_path) do |t|
 	    text = t.read.gsub(/[,.\/!@#$%^&*()1234567890\[\]|'":;<>?`~+=-]/, "")
-	    (text.chars.length).to_f / text.split(" ").length
+	    (text.chars.reject{|char| [" "].include?(char)}.length).to_f / text.split(" ").length
 	  end
 	end
 
