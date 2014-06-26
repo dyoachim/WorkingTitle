@@ -1,23 +1,22 @@
-<header>
-	<h1><%= @book.title %></h1>
-	<h4><%= @book.author %></h4>
+<header align='center'>
+	<h1><%= @book.title.capitalize %></h1>
+	<h3><%= @book.author.capitalize %></h3>
 </header>
 
 
-<div class="d3_bubble">THIS IS WHERE THE D3 GOES</div>
+<section class="d3_bubble"></section>
 
-<section>
-	<h2>Stats</h2>
+<section class='book_stats'>
 	<ul>
-		<li>Reading Level: <%= @book.reading_level.floor(1) %></li><br>
-		<li>Total Word Count: <%= @book.word_count %></li><br>
-		<li>Average Word Length: <%= @book.avg_word_length.floor(2) %></li><br>
-		<li>Average Number of Syllables Per Word: <%= @book.avg_syllable_length.floor(2) %></li><br>
-		<li>Average Sentence Length: <%= @book.avg_sentence_length.floor(2) %></li>
+		<li><span><%= @book.reading_level.floor(1) %></span><br>Reading Level</li><br>
+		<li><span><%= @book.word_count %></span><br>Word Count</li><br>
+		<li><span><%= @book.avg_word_length.floor(2) %></span><br>Average Word Length</li><br>
+		<li><span><%= @book.avg_syllable_length.floor(2) %></span><br>Average Syllables Per Word</li><br>
+		<li><span><%= @book.avg_sentence_length.floor(2) %></span><br>Average Sentence Length</li>
 	</ul>
 </section>
 
-<section>
+<div>
 	<h2>Comments</h2>
 	<%= render 'commentform' %>
 	<ul>
@@ -29,4 +28,4 @@
 		</li><br>
 	<% end %>
 	</ul>
-</section>
+</div>
