@@ -1,4 +1,4 @@
-require 'CSV'
+require 'csv'
 
 class Book < ActiveRecord::Base
 	has_many :votes
@@ -40,7 +40,7 @@ class Book < ActiveRecord::Base
 	    t.read.gsub(/[\/!@#$%^&*()1234567890\[\]|'":;<>?`~+=-]/, "").split(".").each do |sentence|
 	      sentences << sentence.split(" ")
 	    end
-	    sentences.inject(0.0) { |sentence_length_sum, sentence_array| sentence_length_sum + sentence_array.length} / sentences.length 
+	    sentences.inject(0.0) { |sentence_length_sum, sentence_array| sentence_length_sum + sentence_array.length} / sentences.length
 	  end
 	end
 
@@ -53,11 +53,11 @@ class Book < ActiveRecord::Base
 
 	def get_avg_syllable_length
 	  File.open(self.raw_file_path) do |t|
-	    words = t.read.downcase.gsub(/[,.\/!@#$%^&*()_1234567890\[\]|'":;<>?`~+=]/, "").split(" ").reject {|word| ["a","the","to","he",'of', 'his', 'was', 'in', 'it', 'had', 'that', 'and', 'as', 'with', 'she', 'not', 'for', 'him', 'would', 'at', 'but', 'on', 'they', 'all', 'this', 'be', 'from', 'if', 'or', 'could', 'have', 'so', '-', 'by', 'than', 'which','an', 'is'].include?(word)} 
+	    words = t.read.downcase.gsub(/[,.\/!@#$%^&*()_1234567890\[\]|'":;<>?`~+=]/, "").split(" ").reject {|word| ["a","the","to","he",'of', 'his', 'was', 'in', 'it', 'had', 'that', 'and', 'as', 'with', 'she', 'not', 'for', 'him', 'would', 'at', 'but', 'on', 'they', 'all', 'this', 'be', 'from', 'if', 'or', 'could', 'have', 'so', '-', 'by', 'than', 'which','an', 'is'].include?(word)}
 	    words.inject(0.0) {|syllable_sum, word| syllable_sum + word.syllable_count } / words.length
 	  end
 	end
-	
+
 	def get_reading_level
 		puts self.avg_sentence_length
 		puts self.avg_syllable_length
@@ -70,7 +70,7 @@ class Book < ActiveRecord::Base
 	  File.open(self.raw_file_path) do |t|
 	    # array of words
 	    words = t.read.downcase.gsub(/[,.\/!@#$%^&*()_1234567890\[\]|'":;<>?`~+=]/, "").split(" ")
-	    
+
 	    # chunked_words == [[word,# of occurences],[word,# of occurences]...] in desc order of occurences
 	    chunked_words = []
 	    words.sort.chunk {|word| word }.each {|word, chunk| chunked_words << [word, chunk.length]}
