@@ -59,10 +59,6 @@ class Book < ActiveRecord::Base
 	end
 	
 	def get_reading_level
-		puts self.avg_sentence_length
-		puts self.avg_syllable_length
-
-	    puts (((self.avg_sentence_length * 0.39) + (self.avg_syllable_length * 11.8)) - 15.59).floor(2)
 	    (((self.avg_sentence_length * 0.39) + (self.avg_syllable_length * 11.8)) - 15.59).floor(2)
 	end
 

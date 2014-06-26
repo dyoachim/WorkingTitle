@@ -9,14 +9,8 @@ class BooksController < ApplicationController
 	end
 
 	def create
-		@book = Book.new(params[:book])
+		@book = Book.new(book_params)
 		@book.user_id = params[:user_id]
-		# @book.parsed_file_path = 
-		# @book.word_count = 
-		# @book.avg_word_length =
-		# @book.avg_syllable_length =
-		# @book.avg_sentence_length =
-		# @book.reading_level =
 		if @book.save
 			redirect_to user_book_path(params[:user_id], @book)
 		else
@@ -32,5 +26,11 @@ class BooksController < ApplicationController
 	def destroy
 		@book = Book.find(params[:id])
 		@book.destroy
+	end
+
+	private
+
+	def book_params
+		params.require(:book).permit(:title, :author)
 	end
 end
