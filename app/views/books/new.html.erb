@@ -1,12 +1,9 @@
-<%= form_for @book do |f| %>
-	<%= f.label :title %>
+<%= form_for @book, url: {action: "create"} do |f| %>
 	<%= f.text_field :title, placeholder: "Title" %><br>
 
-	<%= f.label :author %>
-	<%= f.password_field :author, placeholder: "Author" %><br>
+	<%= f.text_field :author, placeholder: "Author" %><br>
 
-	<%= f.label :raw_file_path %>
-	<%= f.file_field :raw_file_path %><br>
+	<%= f.file_field :file %><br>
 
 	<%= f.submit%>
 <% end %>
