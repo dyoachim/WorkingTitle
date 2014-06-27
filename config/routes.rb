@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#login'
   post '/logout' => 'sessions#logout'
   get '/search' => 'books#all'
+
+  resources :books #Take out before release
+
 end
