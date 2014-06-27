@@ -12,11 +12,11 @@ Step 2:
 Bundle
 
 Step 3:
-Run RSpec
+Run 'RSpec'
 They pass.
 
 Step 4:
-Rails s
+Run 'Rails s'
 
 Step 5:
-Money.
+Profit.
