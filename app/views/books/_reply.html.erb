@@ -1,0 +1,5 @@
+<%= form_tag("/users/#{params[:user_id]}/books/#{params[:id]}/comments", method: 'post') do %>
+  <%= hidden_field_tag(:parent_id, comment.id) %>
+  <%= text_field_tag(:comment_text) %>
+  <%= submit_tag("Add Comment") %>
+<% end %>

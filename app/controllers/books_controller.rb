@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-
+	# helper CommentsHelper
 	def all
 		@books = Book.search(params[:search])
 	end
