@@ -4,6 +4,13 @@
 </header>
 <style>
 
+<h3>
+	<p class='upvote'>UP</p>
+	<div class='vote_count' id='<%= @book.id %>'>
+		<%= @book.votes.sum('up_or_down')%>
+	</div> 
+	<p class='downvote'>DOWN</p>
+</h3>
 
 
 </style>

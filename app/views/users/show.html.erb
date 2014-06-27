@@ -1,2 +1,36 @@
-<h2><%= @user.first_name %> Page!</h2>
-<%= link_to "Edit", edit_user_path(@user)%>
+<ul>
+  <li><h1><%= @user.first_name.capitalize %></h1></li>
+  <li><%= link_to "Edit", edit_user_path(@user)%></li>
+</ul>
+
+<ul>
+  <li><h1>Books</h1></li>
+  <li><h3><%= @user.books.count %></h3></li>
+  <li><%= link_to "Add?", new_user_book_path(@user) %></li>
+</ul>
+<% if @user.books.any? %>
+  <% @user.books.each do |book| %>
+    <ul>
+      <li><h2><%= link_to book.title.capitalize, user_book_path(@user, book) %></h2></li>
+      <li><h4><%= book.author %></h4></li>
+      <li><h4>Level <%= book.reading_level %></h4></li>
+      <li><h4><%= book.word_count %> words</h4></li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>No books</p>
+<% end %>
+
+<ul>
+  <li><h2>Comments</h2></li>
+  <li><h4><%= @user.comments.count %></h4></li>
+</ul>
+
+<% if @user.comments.any? %>
+  <% @user.comments.each do |comment| %>
+    <p><%= comment.comment_text %></p>
+    <p><%= comment.created_at.localtime.strftime('%H:%M %m/%d/%Y') %></p>
+  <% end %>
+<% else %>
+  <p>No comments</p>
+<% end %>

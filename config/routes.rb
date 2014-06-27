@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#logout'
   get '/search' => 'books#all'
 
-  resources :books #Take out before release
+  post 'users/:user_id/books/:book_id/upvote' => 'votes#upvote'
+  post 'users/:user_id/books/:book_id/downvote' => 'votes#downvote'
 
 end

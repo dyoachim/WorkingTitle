@@ -3,7 +3,15 @@ class BooksController < ApplicationController
 
 
 	def all
-		@books = Book.search(params[:search])
+		if search_params
+			Rails.logger.debug(search_params)
+			@books = Book.search(search_params).order("title")
+			Rails.logger.debug('****************')
+			Rails.logger.debug(@books[0].title)
+			Rails.logger.debug('****************')
+		else
+			@books = Book.all.order("title")
+		end
 	end
 
 	def new
@@ -34,5 +42,9 @@ class BooksController < ApplicationController
 
 	def book_params
 		params.require(:book).permit(:title, :author)
+	end
+
+	def search_params
+		params.permit(:search)
 	end
 end
