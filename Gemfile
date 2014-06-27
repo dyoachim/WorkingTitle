@@ -41,4 +41,6 @@ gem 'rspec-rails'
 gem 'capybara'
 gem 'launchy'
 
+gem 'simplecov', '~> 0.7.1', require: false, group: :test
+
 gem 'rails_12factor', group: :production
