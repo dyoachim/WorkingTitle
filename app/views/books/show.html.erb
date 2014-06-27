@@ -19,26 +19,13 @@
 
 <section>
 	<h2>Comments</h2>
-  <% nest(@comments) %>
 	
 	<% if flash[:error] %>
 	  <%= flash[:error] %>
 	<% end %>
 	<%= render 'commentform' %>
+	
 	<ul>
-		<% @comments.each do |comment| %>
-			<% user = User.find(comment.commenter_id) %>
-			<li>
-				<dl><%= user.first_name %> <%= user.last_name %></dl>
-				<dd><%= comment.comment_text %></dd>
-				<dd>
-					<%= form_tag("/users/#{params[:user_id]}/books/#{params[:id]}/comments", method: 'post') do %>
-  				<%=   hidden_field_tag(:parent_id, comment.id) %>
-  				<%=   text_field_tag(:comment_text) %>
-  				<%=   submit_tag("Add Comment") %>
-					<% end %>
-				</dd>
-			</li><br>
-		<% end %>
+  	<%= raw nest('', @comments.select{|comment| comment.parent_id == nil}) %>
 	</ul>
 </section>

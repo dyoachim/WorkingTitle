@@ -1,18 +1,17 @@
 module CommentsHelper
-	def nest(comments)
-		comments.each do |comment|
-			children = Comment.where("parent_id = ?", comment.id) 
-			real_children = children.reject{|child| child.parent_id == nil}
-			
-			Rails.logger.debug(comment.comment_text)
-			if !real_children.empty?  
-				nest(real_children)
-			end
+	def nest(v, comments)
+		if comments.empty?
+			return
 		end
+		
+		comments.each do |comment|
+			puts comment.comment_text
+			v += render partial: "comment", locals: {comment: comment}
+
+			children = Comment.where("parent_id = ?", comment.id)
+			nest(v, children)
+		end
+		puts v
+		v
 	end
 end
-# parent 1
-#   |_child 1
-#     |_child_child 1
-#   |_child 2
-# parent 2
