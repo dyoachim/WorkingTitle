@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#login'
   post '/logout' => 'sessions#logout'
   get '/search' => 'books#all'
+  post 'users/:user_id/books/:book_id/upvote' => 'votes#upvote'
+  post 'users/:user_id/books/:book_id/downvote' => 'votes#downvote'
 end
