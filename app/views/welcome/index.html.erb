@@ -14,7 +14,7 @@
   <% end %>
 <% end %>
 
-<h3>Recent Books</h3>
+<h3><%= link_to "Recent Books", recent_books_path %></h3>
 <% if @recent_books.any? %>
   <% @recent_books.each do |book| %>
     <ul>
@@ -24,7 +24,14 @@
   <% end %>
 <% end %>
 
-<h3>Popular Books</h3>
+<h3><%= link_to "Popular Books", popular_books_path %></h3>
+<% if @popular_books.any? %>
+  <% @popular_books.each do |book| %>
+    <ul>
+      <li><%= book.title %> <%= book.votes.sum('up_or_down') %></li>
+    </ul>
+  <% end %>
+<% end %>
 
 
 <h3>Best of</h3>
