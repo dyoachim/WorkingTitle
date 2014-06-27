@@ -100,11 +100,9 @@ class Book < ActiveRecord::Base
 	  end
 	end
 
-	def self.search(search)
-	  if search
-	    find_by_title(:all, conditions: ['title LIKE ?', "%#{search}%"])
-	  else
-	    find_by_title(:all)
-	  end
+	def self.search(query)
+	  if query
+	    where('title LIKE ? OR author LIKE ?', "%#{query["search"]}%", "%#{query["search"]}%")
+		end
 	end
 end
