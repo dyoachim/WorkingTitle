@@ -3,5 +3,37 @@
 
 <p> Working title is a simple to use web application that allows for uploading your favorite books in a text file and giving you the user a quick analysis. </p>
 
+<h3>Recent Comments</h3>
+<% if @recent_comments.any? %>
+  <% @recent_comments.each do |comment| %>
+    <ul>
+      <li><%= comment.commenter.first_name %> <%= comment.created_at.localtime.strftime('%H:%M %m/%d/%Y') %></li><br>
+      <li><%= comment.comment_text %></li>
+    </ul>
+    <br>
+  <% end %>
+<% end %>
+
+<h3>Recent Books</h3>
+<% if @recent_books.any? %>
+  <% @recent_books.each do |book| %>
+    <ul>
+      <li><%= book.title %> <%= book.created_at.localtime.strftime('%H:%M %m/%d/%Y') %></li>
+    </ul>
+    <br>
+  <% end %>
+<% end %>
+
+<h3>Popular Books</h3>
 
 
+<h3>Best of</h3>
+<% if @books.any? %>
+  <p>Highest reading level: <%= @best_level.title %> <%= @best_level.reading_level %></p>
+  <p>most words: <%= @most_words.title %> <%= @most_words.word_count %></p>
+  <p>Longest average word length: <%= @best_word_length.title %> <%= @best_word_length.avg_word_length %></p>
+  <p>longest average syllable length: <%= @best_syllable_length.title %> <%= @best_syllable_length.avg_syllable_length %></p>
+  <p>longest average sentence length: <%= @best_sentence_length.title %> <%= @best_sentence_length.avg_sentence_length %></p>
+  <p>Most uploaded author <%= @most_author %></p>
+  <p>Most uploaded book <%= @most_book %></p>
+<% end %>
