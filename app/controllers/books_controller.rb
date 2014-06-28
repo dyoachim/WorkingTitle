@@ -8,8 +8,6 @@ class BooksController < ApplicationController
 			else
 				@books = Book.all.order("title")
 			end
-		else
-			@books = Book.all.order("title")
 		end
 	end
 
@@ -35,6 +33,14 @@ class BooksController < ApplicationController
 	def destroy
 		@book = Book.find(params[:id])
 		@book.destroy
+	end
+
+	def recent
+		@recent_books = Book.order(created_at: :desc)
+	end
+
+	def popular
+		@popular_books = Book.joins(:votes).group("books.id").order("sum(votes.up_or_down) desc")
 	end
 
 	private

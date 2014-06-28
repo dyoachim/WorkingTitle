@@ -14,7 +14,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+<<<<<<< HEAD
 $(document).on('page:load', function() {
+=======
+
+$(document).ready(function() {
+>>>>>>> 53b60fcade45228f0569cb6e1c26eac2a45fa56a
 	var url = window.location.href;
 
 	$('.downvote').on('click', function(e) {
@@ -27,6 +32,8 @@ $(document).on('page:load', function() {
 				var current_count = $('.vote_count#' + response.book_id).html();
 				var current_count_int = parseInt(current_count, 10) - 1;
 				$('.vote_count#' + response.book_id).html(current_count_int);
+				$('.downvote').remove();
+				$('.upvote').remove();
 			}
 		});
 	});
@@ -41,6 +48,8 @@ $(document).on('page:load', function() {
 				var current_count = $('.vote_count#' + response.book_id).html();
 				var current_count_int = parseInt(current_count, 10) + 1;
 				$('.vote_count#' + response.book_id).html(current_count_int);
+				$('.downvote').remove();
+				$('.upvote').remove();
 			}
 		});
 	});

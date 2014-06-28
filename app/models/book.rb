@@ -60,6 +60,26 @@ class Book < ActiveRecord::Base
 	    (((self.avg_sentence_length * 0.39) + (self.avg_syllable_length * 11.8)) - 15.59).floor(2)
 	end
 
+	def self.get_highest_level_book
+		Book.where('reading_level=?',Book.maximum('reading_level')).first
+	end
+
+	def self.get_most_words_book
+		Book.where('word_count=?', Book.maximum('word_count')).first
+	end
+
+	def self.get_highest_word_length_book
+		Book.where('avg_word_length=?', Book.maximum('avg_word_length')).first
+	end
+
+	def self.get_most_syllable_book
+		Book.where('avg_syllable_length=?', Book.maximum('avg_syllable_length')).first
+	end
+
+	def self.get_longest_sentences_book
+		Book.where('avg_sentence_length=?', Book.maximum('avg_sentence_length')).first
+	end
+
 	def parse_into_csv
 	  File.open(self.raw_file_path) do |t|
 	    # array of words

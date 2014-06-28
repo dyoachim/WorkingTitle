@@ -52,31 +52,17 @@ end
 # 	end
 # end
  
-# feature 'Voting on books' do
-# 	it 'should create a new vote' do
-		# user = User.create(id: 1, first_name: 'Natalie', last_name: 'Frecka', email: 'nfrecka@gmail.com', password: 'caketime')
-		# Book.create!(id: 1, title: 'kafka', author: 'meta')
-# 	end
-# 	
-# 	it 'upvote should add one to total vote count' do
+feature 'Voting on books' do
+	it 'should create a new vote' do
+		user = User.create(id: 1, first_name: 'Natalie', last_name: 'Frecka', email: 'nfrecka@gmail.com', password: 'caketime')
+		Book.create!(id: 1, title: 'kafka', author: 'meta')
+	end
+	
+	it 'upvote should add one to total vote count' do
 
-# 	end
-# 	
-# 	it 'downvote should subtract one from total vote count' do
+	end
+	
+	it 'downvote should subtract one from total vote count' do
 
-# 	end
-# end
-
-# feature 'Search for books' do
-# 	it 'display books that with similar title to search text' do
-
-# 	end
-# 	
-# 	it 'display books that with similar author to search text' do
-
-# 	end
-# 	
-# 	it 'display all books if search yields no results' do
-
-# 	end
-# end
+	end
+end
