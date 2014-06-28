@@ -48,6 +48,7 @@ feature 'Comment on book' do
 		expect(Comment.last.comment_text).to eq('Comment time!')
 	end
 
+
 	it 'should appear on reload' do
 		visit root_path
 		fill_in 'email', with: user.email
@@ -100,4 +101,8 @@ end
 # 		click_on 'DOWN'
 # 		expect(page).to have_content(0)
 # 	end
+<<<<<<< HEAD
 #end
+=======
+#end
+>>>>>>> e526302627251af00c49392c3060009e19935a1f
