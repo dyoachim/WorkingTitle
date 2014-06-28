@@ -14,12 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-<<<<<<< HEAD
-$(document).on('page:load', function() {
-=======
 
-$(document).ready(function() {
->>>>>>> 53b60fcade45228f0569cb6e1c26eac2a45fa56a
+$(document).on('page:load', function() {
 	var url = window.location.href;
 
 	$('.downvote').on('click', function(e) {

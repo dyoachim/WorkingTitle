@@ -2,15 +2,11 @@ require 'rails_helper'
 
 describe Book do
 
-<<<<<<< HEAD
 	let!(:book){Book.create(title: "test-book", author: "")}
-	let!(:book1){Book.create(title: "sherlock", author: "sir arthur conan doyle")}
-	let!(:book2){Book.create(title: "kafka", author: "author!")}
-	
-=======
-	let(:book){Book.create(title: "test-book")}
+	let!(:sherlock_book){Book.create(title: "sherlock")}
+	let!(:kafka_book){Book.create(title: "kafka")}
+	let!(:ulysses_book){Book.create(title: "ulysses")}
 
->>>>>>> 53b60fcade45228f0569cb6e1c26eac2a45fa56a
 	describe '#get_word_count' do
 		it 'returns the word count' do
 			expect(book.get_word_count).to eq(11)
@@ -54,9 +50,6 @@ describe Book do
 	end
 
 	describe 'leading book methods' do
-		let!(:sherlock_book){Book.create(title: "sherlock")}
-		let!(:kafka_book){Book.create(title: "kafka")}
-		let!(:ulysses_book){Book.create(title: "ulysses")}
 
 		describe '#get_highest_level_book' do
 			it "returns the book with the highest reading level" do
