@@ -44,6 +44,7 @@ feature 'Comment on book' do
 		expect(Comment.last.comment_text).to eq('Comment time!')
 	end
 
+
 	it 'should appear on reload' do
 		@user = User.create!(first_name: 'Natalie', last_name: 'Frecka', email: 'nfrecka@gmail.com', password: 'caketime')
 		visit root_path
@@ -97,4 +98,4 @@ end
 # 		click_on 'DOWN'
 # 		expect(page).to have_content(0)
 # 	end
-end
+#end
