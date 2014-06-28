@@ -14,6 +14,6 @@ class WelcomeController < ApplicationController
 
 
 
-    @popular_books = Book.joins(:votes).group("books.id").order("sum(votes.up_or_down) desc")
+    @popular_books = Book.joins(:votes).group("books.id").order("sum(votes.up_or_down) desc").limit(5)
   end
 end
