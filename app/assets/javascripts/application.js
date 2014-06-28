@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require d3
 
 $(document).on('page:load', function() {
 	var url = window.location.href;
