@@ -116,7 +116,15 @@
         null,
         2,
         2,
+        2,
+        2,
         18,
+        18,
+        null,
+        2,
+        null,
+        2,
+        2,
         null,
         null,
         null,
@@ -185,9 +193,19 @@
         4,
         4,
         null,
+        null,
+        null,
+        4,
+        null,
         null
       ],
       "/home/jonsnow/Desktop/workingtitle/app/models/comment.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/home/jonsnow/Desktop/workingtitle/app/models/vote.rb": [
         1,
         1,
         1,
@@ -234,6 +252,6 @@
         null
       ]
     },
-    "timestamp": 1403901409
+    "timestamp": 1403976722
   }
 }
