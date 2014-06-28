@@ -1,25 +1,37 @@
 {
   "RSpec": {
     "coverage": {
+<<<<<<< HEAD
       "/home/jonsnow/Desktop/workingtitle/app/helpers/application_helper.rb": [
         1,
         null
       ],
       "/home/jonsnow/Desktop/workingtitle/app/helpers/sessions_helper.rb": [
+=======
+      "/Users/Natalie/Desktop/WorkingTitle/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/Natalie/Desktop/WorkingTitle/app/helpers/sessions_helper.rb": [
+>>>>>>> master
         1,
         1,
-        17,
-        9,
-        9,
+        69,
+        54,
+        54,
         null,
         null,
         null,
         1,
-        11,
+        33,
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/jonsnow/Desktop/workingtitle/app/models/book.rb": [
+=======
+      "/Users/Natalie/Desktop/WorkingTitle/app/models/book.rb": [
+>>>>>>> master
         1,
         null,
         1,
@@ -30,76 +42,76 @@
         1,
         null,
         1,
-        24,
-        24,
-        24,
-        24,
-        24,
-        24,
-        24,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
         null,
         null,
         1,
-        25,
+        68,
         null,
         null,
         1,
-        25,
+        68,
         null,
         null,
         1,
-        25,
-        25,
-        null,
-        null,
-        null,
-        1,
-        25,
-        null,
-        25,
-        25,
-        144850,
-        null,
-        144875,
+        68,
+        68,
         null,
         null,
         null,
         1,
-        25,
-        25,
-        11109530,
+        68,
+        null,
+        68,
+        68,
+        441228,
+        null,
+        441296,
         null,
         null,
         null,
         1,
-        25,
-        1998875,
-        1303100,
+        68,
+        68,
+        34291013,
         null,
         null,
         null,
         1,
-        25,
+        68,
+        6172451,
+        4012270,
         null,
-        null,
-        1,
-        5,
-        null,
-        null,
-        1,
-        5,
         null,
         null,
         1,
-        5,
+        68,
         null,
         null,
         1,
-        5,
+        12,
         null,
         null,
         1,
-        5,
+        12,
+        null,
+        null,
+        1,
+        12,
+        null,
+        null,
+        1,
+        12,
+        null,
+        null,
+        1,
+        12,
         null,
         null,
         1,
@@ -131,20 +143,24 @@
         null,
         null,
         1,
-        0,
-        0,
+        1,
+        1,
         null,
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/jonsnow/Desktop/workingtitle/app/controllers/sessions_controller.rb": [
+=======
+      "/Users/Natalie/Desktop/WorkingTitle/app/controllers/sessions_controller.rb": [
+>>>>>>> master
         1,
         null,
         1,
-        2,
-        2,
-        2,
-        2,
+        9,
+        9,
+        9,
+        9,
         null,
         0,
         null,
@@ -156,7 +172,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/jonsnow/Desktop/workingtitle/app/controllers/application_controller.rb": [
+=======
+      "/Users/Natalie/Desktop/WorkingTitle/app/controllers/application_controller.rb": [
+>>>>>>> master
         1,
         null,
         null,
@@ -164,7 +184,11 @@
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/jonsnow/Desktop/workingtitle/app/models/user.rb": [
+=======
+      "/Users/Natalie/Desktop/WorkingTitle/app/models/user.rb": [
+>>>>>>> master
         1,
         1,
         1,
@@ -178,27 +202,32 @@
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/jonsnow/Desktop/workingtitle/app/controllers/welcome_controller.rb": [
+=======
+      "/Users/Natalie/Desktop/WorkingTitle/app/controllers/welcome_controller.rb": [
+>>>>>>> master
         1,
         null,
         1,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
+        11,
+        11,
+        11,
+        11,
+        11,
+        11,
+        11,
+        11,
+        11,
+        11,
         null,
         null,
         null,
-        4,
+        11,
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/jonsnow/Desktop/workingtitle/app/models/comment.rb": [
         1,
         1,
@@ -206,6 +235,21 @@
 
       "/home/jonsnow/Desktop/workingtitle/app/controllers/users_controller.rb": [
 
+=======
+      "/Users/Natalie/Desktop/WorkingTitle/app/models/comment.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/Natalie/Desktop/WorkingTitle/app/models/vote.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/Natalie/Desktop/WorkingTitle/app/controllers/users_controller.rb": [
+>>>>>>> master
         1,
         null,
         1,
@@ -236,7 +280,7 @@
         null,
         null,
         1,
-        4,
+        11,
         null,
         null,
         1,
@@ -244,10 +288,94 @@
         null,
         null,
         null
+      ],
+      "/Users/Natalie/Desktop/WorkingTitle/app/controllers/books_controller.rb": [
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
+        2,
+        null,
+        null,
+        1,
+        2,
+        2,
+        2,
+        2,
+        null,
+        0,
+        null,
+        null,
+        null,
+        1,
+        6,
+        6,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        null,
+        1,
+        2,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/Users/Natalie/Desktop/WorkingTitle/app/controllers/comments_controller.rb": [
+        1,
+        null,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        null,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        2,
+        null,
+        null
       ]
     },
+<<<<<<< HEAD
 
     "timestamp": 1403976722
 
+=======
+    "timestamp": 1403987930
+>>>>>>> master
   }
 }

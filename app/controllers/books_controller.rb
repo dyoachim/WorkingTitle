@@ -5,8 +5,11 @@ class BooksController < ApplicationController
 	def all
 		if search_params
 			@books = Book.search(search_params).order("title")
-		else
-			@books = Book.all.order("title")
+			if @books.any?
+				@books
+			else
+				@books = Book.all.order("title")
+			end
 		end
 	end
 
