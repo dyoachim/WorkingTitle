@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :books, except: [:index, :edit, :update] do
-      resources :comments, only: [:create, :destroy]
+      resources :comments, only: [:create]
     end
   end
 
