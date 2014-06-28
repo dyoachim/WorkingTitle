@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function() {
+$(document).on('page:load', function() {
 	var url = window.location.href;
 
 	$('.downvote').on('click', function(e) {
