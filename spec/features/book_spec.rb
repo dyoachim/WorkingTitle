@@ -101,8 +101,4 @@ end
 # 		click_on 'DOWN'
 # 		expect(page).to have_content(0)
 # 	end
-<<<<<<< HEAD
 #end
-=======
-#end
->>>>>>> e526302627251af00c49392c3060009e19935a1f
