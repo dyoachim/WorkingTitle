@@ -92,13 +92,20 @@ class Book < ActiveRecord::Base
 	    chunked_words = chunked_words.sort {|x,y| y[1] <=> x[1]}
 
 	    # put chunks into csv file
+		json_array = []	   
 	    CSV.open(self.parsed_file_path, "w", write_headers: true, headers: ["name", "count"]) do |csv|
 	      chunked_words.each do |chunk|
 	        csv << chunk
+	        json_chunks  = {name: chunk[0], size: chunk[1]}  
 	      end
-	    end
+	      	json_array << json_chunks
+	      	# saves json_array to json file
+	  		File.open(self.parsed_file_path,"w") do |f|
+    			f.write(json_array.to_json)
+	   		end
 	  end
-	end
+ 	end 
+end
 
 	def self.search(query)
 	  if query

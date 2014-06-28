@@ -1,5 +1,4 @@
   {
-    "name": "words",
      "children": [
       {"name": "Sherlock", "size": 43},
       {"name": "Holmes", "size": 13},
