@@ -2,7 +2,9 @@ require 'rails_helper'
 
 describe Book do
 
-	let(:book){Book.create(title: "test-book")}
+	let!(:book){Book.create(title: "test-book", author: "")}
+	let!(:book1){Book.create(title: "sherlock", author: "sir arthur conan doyle")}
+	let!(:book2){Book.create(title: "kafka", author: "author!")}
 	
 	describe '#get_word_count' do
 		it 'returns the word count' do
@@ -30,13 +32,13 @@ describe Book do
 
 	describe '#get_raw_file_path' do
 		it 'returns raw file path' do
-			expect(book.get_raw_file_path).to eq('/Users/apprentice/Desktop/WorkingTitle/public/test-book.txt')
+			expect(book.get_raw_file_path).to eq("#{Rails.root}/public/test-book.txt")
 		end
 	end
 
 	describe '#get_path_file_path' do
 		it 'returns parsed file path' do
-			expect(book.get_parsed_file_path).to eq('/Users/apprentice/Desktop/WorkingTitle/public/p-test-book.txt')
+			expect(book.get_parsed_file_path).to eq("#{Rails.root}/public/p-test-book.txt")
 		end
 	end
 
@@ -65,6 +67,14 @@ describe Book do
 			end
 			
 			expect(text[0..9]).to eq("name,count")
+		end
+	end
+
+	describe '#search' do
+
+		it 'should return all books if there are no search params' do
+			found_books = Book.search('nothing')
+			expect(found_books.first.title).to eq('test-book')
 		end
 	end
 end

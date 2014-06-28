@@ -2,11 +2,12 @@ class BooksController < ApplicationController
 
 	def all
 		if search_params
-			Rails.logger.debug(search_params)
 			@books = Book.search(search_params).order("title")
-			Rails.logger.debug('****************')
-			Rails.logger.debug(@books[0].title)
-			Rails.logger.debug('****************')
+			if @books.any?
+				@books
+			else
+				@books = Book.all.order("title")
+			end
 		else
 			@books = Book.all.order("title")
 		end

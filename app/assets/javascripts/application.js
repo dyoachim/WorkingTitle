@@ -14,8 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$(document).ready(function() {
-	var url = window.location.href
+$(document).on('page:load', function() {
+	var url = window.location.href;
 
 	$('.downvote').on('click', function(e) {
 		e.preventDefault();
