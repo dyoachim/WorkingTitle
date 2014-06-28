@@ -4,11 +4,7 @@ class BooksController < ApplicationController
 
 	def all
 		if search_params
-			Rails.logger.debug(search_params)
 			@books = Book.search(search_params).order("title")
-			Rails.logger.debug('****************')
-			Rails.logger.debug(@books[0].title)
-			Rails.logger.debug('****************')
 		else
 			@books = Book.all.order("title")
 		end
@@ -36,6 +32,14 @@ class BooksController < ApplicationController
 	def destroy
 		@book = Book.find(params[:id])
 		@book.destroy
+	end
+
+	def recent
+		@recent_books = Book.order(created_at: :desc)
+	end
+
+	def popular
+		@popular_books = Book.joins(:votes).group("books.id").order("sum(votes.up_or_down) desc")
 	end
 
 	private

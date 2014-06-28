@@ -1,0 +1,6 @@
+<h1>Popular books page!</h1>
+<% if @popular_books.any? %>
+  <% @popular_books.each do |book| %>
+    <p><%= book.title %> <%= book.votes.sum('up_or_down') %></p>
+  <% end %>
+<% end %>
