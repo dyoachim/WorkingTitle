@@ -16,7 +16,7 @@
 //= require_tree .
 //= require d3
 
-$(document).on('page:load', function() {
+$(document).ready(function() {
 	var url = window.location.href;
 
 	$('.downvote').on('click', function(e) {

@@ -61,44 +61,29 @@ feature 'Comment on book' do
 	end
 end
 
-# feature 'Reply to user comment' do
-# 	it 'should create a comment with a parent id equal to original comment id' do
-#
-# 	end
-# end
+feature 'Voting on books' do
 
-# feature 'Voting on books' do
-# 	it 'should create a new vote' do
-# 		@user = User.create(first_name: 'Natalie', last_name: 'Frecka', email: 'nfrecka@gmail.com', password: 'caketime')
-# 		visit root_path
-# 		fill_in 'email', with: @user.email
-#     fill_in 'password', with: "caketime"
-#     click_on 'Login'
-# 		visit_user_book_path(@user.id, @book.id)
-# 		click_on 'UP'
-# 		expect(Vote.last.up_or_down).to eq(1)
-# 	end
+  let!(:user) { User.create(first_name: 'Natalie', last_name: 'Frecka', email: 'nfrecka@gmail.com', password: 'caketime') }
+  let!(:book) { Book.create!(title: 'kafka', author: 'meta') }
 
-# 	it 'upvote should add one to total vote count' do
-# 		@user = User.create(first_name: 'Natalie', last_name: 'Frecka', email: 'nfrecka@gmail.com', password: 'caketime')
-# 		visit root_path
-# 		fill_in 'email', with: @user.email
-#     fill_in 'password', with: "caketime"
-#     click_on 'Login'
-# 		visit_user_book_path(@user.id, @book.id)
-# 		click_on 'UP'
-# 		expect(page).to have_content(1)
-# 	end
+	it 'upvote should add one to total vote count' do
+		visit root_path
+		fill_in 'email', with: user.email
+    fill_in 'password', with: "caketime"
+    click_on 'Login'
+		visit user_book_path(user.id, book.id)
+		click_on 'UP'
+		expect(page).to have_content(1)
+	end
 
-# 	it 'downvote should subtract one from total vote count' do
-# 		@user = User.create(first_name: 'Natalie', last_name: 'Frecka', email: 'nfrecka@gmail.com', password: 'caketime')
-# 		visit root_path
-# 		fill_in 'email', with: @user.email
-#     fill_in 'password', with: "caketime"
-#     click_on 'Login'
-# 		visit_user_book_path(@user.id, @book.id)
-# 		click_on 'UP'
-# 		click_on 'DOWN'
-# 		expect(page).to have_content(0)
-# 	end
-#end
+	it 'downvote should subtract one from total vote count' do
+		visit root_path
+		fill_in 'email', with: user.email
+    fill_in 'password', with: "caketime"
+    click_on 'Login'
+		visit user_book_path(user.id, book.id)
+		click_on 'UP'
+		click_on 'DOWN'
+		expect(page).to have_content(0)
+	end
+end

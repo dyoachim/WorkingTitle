@@ -1,25 +1,21 @@
 <header align='center'>
 	<h1><%= @book.title.capitalize %></h1>
 	<h3><%= @book.author.capitalize %></h3>
+	<h3>
+		<% if Vote.find_by(voter_id: session[:current_user_id], book_id: @book.id) %>
+			<div class='vote_count' id='<%= @book.id %>'>
+				<%= @book.votes.sum('up_or_down')%>
+			</div>
+		<% else %>
+			<button class='upvote'>UP</button>
+			<div class='vote_count' id='<%= @book.id %>'>
+				<%= @book.votes.sum('up_or_down')%>
+			</div>
+			<button class='downvote'>DOWN</button>
+		<% end %>
+	</h3>
 </header>
-<style>
 
-<h3>
-	<% if Vote.find_by(voter_id: session[:current_user_id], book_id: @book.id) %>
-		<div class='vote_count' id='<%= @book.id %>'>
-			<%= @book.votes.sum('up_or_down')%>
-		</div>
-	<% else %>
-		<p class='upvote'>UP</p>
-		<div class='vote_count' id='<%= @book.id %>'>
-			<%= @book.votes.sum('up_or_down')%>
-		</div>
-		<p class='downvote'>DOWN</p>
-	<% end %>
-</h3>
-
-
-</style>
 <body>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 
