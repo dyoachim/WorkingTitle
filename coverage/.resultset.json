@@ -203,15 +203,9 @@
         1,
         1,
         1,
-        null
-      ],
-      "/home/jonsnow/Desktop/workingtitle/app/models/vote.rb": [
-        1,
-        1,
-        1,
-        null
-      ],
+
       "/home/jonsnow/Desktop/workingtitle/app/controllers/users_controller.rb": [
+
         1,
         null,
         1,
@@ -252,6 +246,8 @@
         null
       ]
     },
+
     "timestamp": 1403976722
+
   }
 }

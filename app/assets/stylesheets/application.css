@@ -18,6 +18,19 @@ body {
   font-size: 1.2em;
 }
 
+td {
+  border-bottom: 1px dashed black;
+  padding: 0 30px;
+}
+
+td h2, td h3, td h4 {
+  margin: 5px 0;
+}
+
+li table {
+  margin: 0 30px;
+}
+
 .d3_bubble {
   width: 55%;
   height: 450px;
@@ -37,6 +50,11 @@ body {
   margin-left: 60px;
   text-align: center;
   height: 450px;
+}
+
+.comment_table {
+  margin: 20px;
+  width: 80%;
 }
 
 nav {
@@ -60,6 +78,7 @@ nav a:hover {
 
 ul {
   margin: 0;
+  padding: 0;
   list-style: none;
 }
 
@@ -78,17 +97,17 @@ section {
 }
 
 @media (max-width: 400px) {
-  html {background: red;}
-
   .d3_bubble {
     width: 95%;
     margin: 0 auto;
   }
+
+  td {
+    padding: 0 5px;
+  }
 }
 
 @media (min-width: 401px) and (max-width: 800px) {
-  html { background: green; }
-
   .d3_bubble {
     width: 95%;
     margin: 0 auto;
@@ -96,5 +115,4 @@ section {
 }
 
 @media (min-width: 801px) {
-  html { background: blue; }
 }

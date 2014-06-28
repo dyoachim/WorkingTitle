@@ -5,11 +5,17 @@
 <style>
 
 <h3>
-	<p class='upvote'>UP</p>
-	<div class='vote_count' id='<%= @book.id %>'>
-		<%= @book.votes.sum('up_or_down')%>
-	</div> 
-	<p class='downvote'>DOWN</p>
+	<% if Vote.find_by(voter_id: session[:current_user_id], book_id: @book.id) %>
+		<div class='vote_count' id='<%= @book.id %>'>
+			<%= @book.votes.sum('up_or_down')%>
+		</div>
+	<% else %>
+		<p class='upvote'>UP</p>
+		<div class='vote_count' id='<%= @book.id %>'>
+			<%= @book.votes.sum('up_or_down')%>
+		</div>
+		<p class='downvote'>DOWN</p>
+	<% end %>
 </h3>
 
 

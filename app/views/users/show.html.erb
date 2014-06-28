@@ -4,19 +4,21 @@
 </ul>
 
 <ul>
-  <li><h1>Books</h1></li>
+  <li><h2>Books</h2></li>
   <li><h3><%= @user.books.count %></h3></li>
   <li><%= link_to "Add?", new_user_book_path(@user) %></li>
 </ul>
 <% if @user.books.any? %>
-  <% @user.books.each do |book| %>
-    <ul>
-      <li><h2><%= link_to book.title.capitalize, user_book_path(@user, book) %></h2></li>
-      <li><h4><%= book.author %></h4></li>
-      <li><h4>Level <%= book.reading_level %></h4></li>
-      <li><h4><%= book.word_count %> words</h4></li>
-    </ul>
-  <% end %>
+  <table>
+    <% @user.books.each do |book| %>
+      <tr>
+        <td><h3><%= link_to book.title.capitalize, user_book_path(@user, book) %></h3></td>
+        <td><h4><%= book.author %></h4></td>
+        <td><h4>Level <%= book.reading_level %></h4></td>
+        <td><h4><%= book.word_count %> words</h4></td>
+      </tr>
+    <% end %>
+  </table>
 <% else %>
   <p>No books</p>
 <% end %>
@@ -28,8 +30,12 @@
 
 <% if @user.comments.any? %>
   <% @user.comments.each do |comment| %>
-    <p><%= comment.comment_text %></p>
-    <p><%= comment.created_at.localtime.strftime('%H:%M %m/%d/%Y') %></p>
+    <table class='comment_table'>
+      <tr>
+        <td><%= comment.commenter.first_name.titleize %> commented on <%= comment.book.title.titleize %> on <%= comment.created_at.localtime.strftime('%H:%M %m/%d/%Y') %></td>
+      </tr>
+      <tr><td><%= comment.comment_text %><td></tr>
+    </table>
   <% end %>
 <% else %>
   <p>No comments</p>

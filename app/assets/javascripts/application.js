@@ -29,6 +29,8 @@ $(document).ready(function() {
 				var current_count = $('.vote_count#' + response.book_id).html();
 				var current_count_int = parseInt(current_count, 10) - 1;
 				$('.vote_count#' + response.book_id).html(current_count_int);
+				$('.downvote').remove();
+				$('.upvote').remove();
 			}
 		});
 	});
@@ -43,6 +45,8 @@ $(document).ready(function() {
 				var current_count = $('.vote_count#' + response.book_id).html();
 				var current_count_int = parseInt(current_count, 10) + 1;
 				$('.vote_count#' + response.book_id).html(current_count_int);
+				$('.downvote').remove();
+				$('.upvote').remove();
 			}
 		});
 	});
