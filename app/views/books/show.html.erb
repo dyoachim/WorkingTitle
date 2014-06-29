@@ -93,14 +93,13 @@ d3.select(self.frameElement).style("height", diameter + "px");
 
 <div>
 	<h2>Comments</h2>
-	<%= render 'commentform' %>
-	<ul>
-	<% @comments.each do |comment| %>
-		<% user = User.find(comment.commenter_id) %>
-		<li>
-			<dl><%= user.first_name %> <%= user.last_name %></dl>
-			<dd><%= comment.comment_text %></dd>
-		</li><br>
+	
+	<% if flash[:error] %>
+	  <%= flash[:error] %>
 	<% end %>
+	<%= render 'commentform' %>
+	
+	<ul style="padding-left: 0px">
+  	<%= raw nest('', 0, @comments.select{|comment| comment.parent_id == nil}) %>
 	</ul>
 </div>

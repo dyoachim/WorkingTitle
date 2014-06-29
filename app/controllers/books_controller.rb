@@ -1,7 +1,4 @@
 class BooksController < ApplicationController
-
-
-
 	def all
 		if search_params
 			@books = Book.search(search_params).order("title")

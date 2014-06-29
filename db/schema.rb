@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140625144819) do
   create_table "comments", force: true do |t|
     t.integer  "commenter_id"
     t.integer  "book_id"
+    t.integer  "parent_id"
     t.text     "comment_text"
     t.datetime "created_at"
     t.datetime "updated_at"
