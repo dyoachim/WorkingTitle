@@ -1,17 +1,14 @@
 module CommentsHelper
-	def nest(v, comments)
+	def nest(v, indent, comments)
+		indent += 50
 		if comments.empty?
-			return
+			return v
 		end
-		
 		comments.each do |comment|
-			puts comment.comment_text
-			v += render partial: "comment", locals: {comment: comment}
-
 			children = Comment.where("parent_id = ?", comment.id)
-			nest(v, children)
+			v += render partial: "comment", locals: {comment: comment, indent: indent} 
+			v = nest(v, indent, children)
 		end
-		puts v
 		v
 	end
 end

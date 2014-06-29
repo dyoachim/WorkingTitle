@@ -25,7 +25,7 @@
 	<% end %>
 	<%= render 'commentform' %>
 	
-	<ul>
-  	<%= raw nest('', @comments.select{|comment| comment.parent_id == nil}) %>
+	<ul style="padding-left: 0px">
+  	<%= raw nest('', 0, @comments.select{|comment| comment.parent_id == nil}) %>
 	</ul>
 </section>
