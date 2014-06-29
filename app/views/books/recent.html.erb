@@ -1,0 +1,6 @@
+<h1>Recent books page!</h1>
+<% if @recent_books.any? %>
+  <% @recent_books.each do |book| %>
+    <p><%= book.title %> <%= book.created_at.localtime.strftime('%H:%M %m/%d/%Y') %></p>
+  <% end %>
+<% end %>

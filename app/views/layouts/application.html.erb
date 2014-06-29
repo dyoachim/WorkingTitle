@@ -5,38 +5,32 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-
-
-
-
   <nav>
-    <ul>
-      <li><%= link_to 'Home', root_path %></li>
-      <li><%= render 'shared/search' %></li>
+    <span><%= link_to 'W|||||T', root_path %></span>
       <div class='login_nav'>
-        <% if logged_in? %>
-          <li><%= link_to current_user.first_name, user_path(current_user) %></li>
-          <li><%= link_to "account settings", edit_user_path(current_user) %></li>
-          <li>
-            <%= form_tag('/logout') do %>
+        <ul>
+          <% if logged_in? %>
+            <li><%= link_to current_user.first_name.capitalize, user_path(current_user) %></li>
+            <li><%= form_tag('/logout') do %>
               <%= submit_tag "Logout" %>
-            <% end %>
-          </li>
-        <% else %>
-          <li><a href="/users/new">New User?</a></li>
-          <li>
-            <%= form_tag('/login') do %>
-              <%= text_field_tag "email", nil, placeholder: "Email" %>
-              <%= password_field_tag "password", nil, placeholder: 'Password' %>
-              <%= submit_tag "Login" %>
-            <% end %>
-          </li>
-        <% end %>
+            <% end %></li>
+          <% else %>
+              <%= form_tag('/login') do %>
+                <%= text_field_tag "email", nil, placeholder: "Email" %><br>
+                <%= password_field_tag "password", nil, placeholder: 'Password' %><br>
+                <%= submit_tag "Login" %>
+                <a href="/users/new">New User?</a>
+              <% end %>
+          <% end %>
+        </ul>
       </div>
-		</ul>
+      <%= render 'shared/search' %>
 	</nav>
-  <%= yield %>
+  <div class='content'>
+    <%= yield %>
+  </div>
 </body>
 </html>

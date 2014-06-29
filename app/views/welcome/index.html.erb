@@ -1,1 +1,86 @@
-<h1>Index page goes here</h1>
+<h1>Working Title</h1>
+
+<ul>
+  <li>
+    <% if @books.any? %>
+      <table>
+        <tr><th><h3>Best of</h3></th></tr>
+        <tr>
+          <td><h3>Highest reading level:</h3></td>
+          <td><%= @best_level.title %></td>
+          <td><%= @best_level.reading_level %></td>
+        </tr>
+        <tr>
+          <td><h3>Most words:</h3></td>
+          <td><%= @most_words.title %></td>
+          <td><%= @most_words.word_count %></td>
+        </tr>
+        <tr>
+          <td><h3>Longest average word length:</h3></td>
+          <td><%= @best_word_length.title %></td>
+          <td><%= @best_word_length.avg_word_length.floor(2) %></td>
+        </tr>
+        <tr>
+          <td><h3>Longest average syllable length:</h3></td>
+          <td><%= @best_syllable_length.title %></td>
+          <td><%= @best_syllable_length.avg_syllable_length.floor(2) %></td>
+        </tr>
+        <tr>
+          <td><h3>Longest average sentence length:</h3></td>
+          <td><%= @best_sentence_length.title %></td>
+          <td><%= @best_sentence_length.avg_sentence_length.floor(2) %></td>
+        </tr>
+        <tr>
+          <td><h3>Most uploaded author:</h3></td>
+          <td><%= @most_author[0] %></td>
+          <td><%= @most_author[1] %> uploads</td>
+        </tr>
+        <tr>
+          <td><h3>Most uploaded book</h3></td>
+          <td><%= @most_book[0] %></td>
+          <td><%= @most_book[1] %> uploads</td>
+        </tr>
+      </table>
+    <% end %>
+  </li>
+  <br>
+  <li>
+    <% if @recent_books.any? %>
+      <table>
+        <tr><th><h3><%= link_to "Recent Books", recent_books_path %></h3></th></tr>
+        <% @recent_books.each do |book| %>
+          <tr>
+            <td><h3><%= book.title.titleize %></h3></td>
+            <td></h4>uploaded <%= book.created_at.localtime.strftime('%H:%M %m/%d/%Y') %></h4></td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </li>
+
+  <li>
+    <% if @popular_books.any? %>
+      <table>
+        <tr><th><h3><%= link_to "Popular Books", popular_books_path %></h3></th></tr>
+        <% @popular_books.each do |book| %>
+          <tr>
+            <td><h3><%= book.title.titleize %></h3></td>
+            <td><h4><%= book.votes.sum('up_or_down') %> votes</h4></td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </li>
+</ul>
+
+<% if @recent_comments.any? %>
+  <h3>Recent Comments</h3>
+  <% @recent_comments.each do |comment| %>
+    <table class='comment_table'>
+      <tr>
+        <td><%= comment.commenter.first_name.capitalize %> <%= comment.created_at.localtime.strftime('%H:%M %m/%d/%Y') %></td>
+      </tr>
+      <tr><td><%= comment.comment_text %></td></tr>
+    </table>
+  <% end %>
+<% end %>

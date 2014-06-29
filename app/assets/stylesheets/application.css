@@ -13,15 +13,106 @@
  *= require_tree .
  *= require_self
  */
+body {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+td {
+  border-bottom: 1px dashed black;
+  padding: 0 30px;
+}
+
+td h2, td h3, td h4 {
+  margin: 5px 0;
+}
+
+li table {
+  margin: 0 30px;
+}
+
+.d3_bubble {
+  width: 55%;
+  height: 450px;
+  background-color: orange;
+}
+
+.content {
+  margin: 8px;
+  width: 100%;
+}
+
+.user_form {
+  text-align: center;
+}
+
+.book_stats {
+  margin-left: 60px;
+  text-align: center;
+  height: 450px;
+}
+
+.comment_table {
+  margin: 20px;
+  width: 80%;
+}
 
 nav {
-  background-color: green;
+  background-color: #2C82D9;
+  padding-bottom: 0.3em;
+}
+
+span {
+  font-size: 2.2em;
+  padding-left: 0.2em;
+}
+
+nav a {
+  color: #eee;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #53DEFB;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 li {
   display: inline-block;
 }
 
+section {
+  display: inline-block;
+}
+
+
+
 .login_nav {
   float: right;
+}
+
+@media (max-width: 400px) {
+  .d3_bubble {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  td {
+    padding: 0 5px;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 800px) {
+  .d3_bubble {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 801px) {
 }

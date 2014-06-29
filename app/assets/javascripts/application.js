@@ -14,3 +14,40 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require d3
+
+$(document).ready(function() {
+	var url = window.location.href;
+
+	$('.downvote').on('click', function(e) {
+		e.preventDefault();
+		$.ajax({
+			type: 'POST',
+			url: url + '/downvote',
+			dataType: 'JSON',
+			success: function(response) {
+				var current_count = $('.vote_count#' + response.book_id).html();
+				var current_count_int = parseInt(current_count, 10) - 1;
+				$('.vote_count#' + response.book_id).html(current_count_int);
+				$('.downvote').remove();
+				$('.upvote').remove();
+			}
+		});
+	});
+
+	$('.upvote').on('click', function(e) {
+		e.preventDefault();
+		$.ajax({
+			type: 'POST',
+			url: url + '/upvote',
+			dataType: 'JSON',
+			success: function(response) {
+				var current_count = $('.vote_count#' + response.book_id).html();
+				var current_count_int = parseInt(current_count, 10) + 1;
+				$('.vote_count#' + response.book_id).html(current_count_int);
+				$('.downvote').remove();
+				$('.upvote').remove();
+			}
+		});
+	});
+});

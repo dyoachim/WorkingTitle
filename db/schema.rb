@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140625144819) do
     t.string   "author"
     t.string   "raw_file_path"
     t.string   "parsed_file_path"
+    t.string   "json_file_path"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

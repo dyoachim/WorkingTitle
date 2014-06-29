@@ -2,8 +2,11 @@ require 'rails_helper'
 
 describe Book do
 
-	let(:book){Book.create(title: "test-book")}
-	
+	let!(:book){Book.create(title: "test-book", author: "")}
+	let!(:sherlock_book){Book.create(title: "sherlock")}
+	let!(:kafka_book){Book.create(title: "kafka")}
+	let!(:ulysses_book){Book.create(title: "ulysses")}
+
 	describe '#get_word_count' do
 		it 'returns the word count' do
 			expect(book.get_word_count).to eq(11)
@@ -30,19 +33,52 @@ describe Book do
 
 	describe '#get_raw_file_path' do
 		it 'returns raw file path' do
-			expect(book.get_raw_file_path).to eq('/Users/apprentice/Desktop/WorkingTitle/public/test-book.txt')
+			expect(book.get_raw_file_path).to eq("#{Rails.root}/public/test-book.txt")
 		end
 	end
 
 	describe '#get_path_file_path' do
 		it 'returns parsed file path' do
-			expect(book.get_parsed_file_path).to eq('/Users/apprentice/Desktop/WorkingTitle/public/p-test-book.txt')
+			expect(book.get_parsed_file_path).to eq("#{Rails.root}/public/p-test-book.txt")
 		end
 	end
 
 	describe '#get_reading_level' do
 		it 'returns the reading level' do
 			expect(book.get_reading_level).to eq(2.36)
+		end
+	end
+
+	describe 'leading book methods' do
+
+		describe '#get_highest_level_book' do
+			it "returns the book with the highest reading level" do
+				expect(Book.get_highest_level_book).to eq(kafka_book)
+			end
+		end
+
+		describe '#get_most_words_book' do
+			it "returns the book with the highest word count" do
+				expect(Book.get_most_words_book).to eq(ulysses_book)
+			end
+		end
+
+		describe '#get_highest_word_length_book' do
+			it "returns the book with the longest average word length" do
+				expect(Book.get_highest_word_length_book).to eq(ulysses_book)
+			end
+		end
+
+		describe '#get_most_syllable_book' do
+			it "returns the book with the longest average syllables per word" do
+				expect(Book.get_most_syllable_book).to eq(ulysses_book)
+			end
+		end
+
+		describe '#get_longest_sentences_book' do
+			it "returns the book with the longest average sentences" do
+				expect(Book.get_longest_sentences_book).to eq(kafka_book)
+			end
 		end
 	end
 
@@ -53,18 +89,26 @@ describe Book do
 			File.open("#{Rails.root}/public/p-test-book.txt") do |t|
 				text = t.read
 			end
-			
+
 			expect(text[11..14]).to eq("is,2")
 		end
 
-		it 'should have headers' do 
+		it 'should have headers' do
 			book.parse_into_csv
 			text = ""
 			File.open("#{Rails.root}/public/p-test-book.txt") do |t|
 				text = t.read
 			end
-			
+
 			expect(text[0..9]).to eq("name,count")
+		end
+	end
+
+	describe '#search' do
+
+		it 'should return all books if there are no search params' do
+			found_books = Book.search('nothing')
+			expect(found_books.first.title).to eq('test-book')
 		end
 	end
 end
