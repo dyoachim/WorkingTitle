@@ -14,6 +14,7 @@
         <ul>
           <% if logged_in? %>
             <li><%= link_to current_user.first_name.capitalize, user_path(current_user) %></li>
+            <li> | <%= link_to "Edit", edit_user_path(current_user)%></li>
             <li><%= form_tag('/logout') do %>
               <%= submit_tag "Logout" %>
             <% end %></li>

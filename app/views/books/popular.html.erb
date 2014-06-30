@@ -1,6 +1,8 @@
-<h1>Popular books page!</h1>
+<center>
+<h1>Books by score</h1>
 <% if @popular_books.any? %>
   <% @popular_books.each do |book| %>
-    <p><%= book.title %> <%= book.votes.sum('up_or_down') %></p>
+    <p><%= book.votes.sum('up_or_down') %> <%= link_to book.title.titleize, user_book_path(User.find(book.user_id), book) %></p>
   <% end %>
 <% end %>
+</center>

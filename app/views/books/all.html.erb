@@ -1,9 +1,9 @@
 <div class="container">
 		<% if @books.length > 1 %>
 			<% @books.each do |book| %>
-				<h2><%= link_to book.title, user_book_path(book.user_id, book) %></h2>
+				<h2><%= link_to book.title.titleize, user_book_path(book.user_id, book) %></h2>
 			<% end %>
 		<% else %>
-			<%= link_to "#{@books[0].title}", "/users/#{@books[0].user_id}/books/#{@books[0].id}" %>
+			<%= link_to @books[0].title.titleize, "/users/#{@books[0].user_id}/books/#{@books[0].id}" %>
 		<% end %>
 </div>

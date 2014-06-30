@@ -1,5 +1,5 @@
 <% user = User.find(comment.commenter_id) %>
-<li style="margin-left:<%= indent %>px; margin-bottom:5px; border:1px solid black; padding: 5px">
+<li style="margin-left:<%= indent %>px; margin-bottom:5px; border:1px solid black; padding: 5px; border-radius: 10px 10px 10px; ">
 	<dl><%= user.first_name %> <%= user.last_name %></dl>
 	<dd><%= comment.comment_text %></dd>
 	<dd>

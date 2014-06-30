@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Upload a new book' do
 
 	let!(:user) { User.create(first_name: 'Natalie', last_name: 'Frecka', email: 'nfrecka@gmail.com', password: 'caketime') }
-	let!(:book) { Book.create!(title: 'kafka', author: 'meta') }
+	let!(:book) { Book.create!(user_id: user.id, title: 'kafka', author: 'meta') }
 
   it 'should create a new book object' do
     visit root_path
@@ -35,7 +35,7 @@ end
 feature 'Comment on book' do
 
   let!(:user) { User.create(first_name: 'Natalie', last_name: 'Frecka', email: 'nfrecka@gmail.com', password: 'caketime') }
-  let!(:book) { Book.create!(title: 'kafka', author: 'meta') }
+  let!(:book) { Book.create!(user_id: user.id, title: 'kafka', author: 'meta') }
 
   it 'should create a new comment' do
 		visit root_path
@@ -64,7 +64,7 @@ end
 feature 'Voting on books' do
 
   let!(:user) { User.create(first_name: 'Natalie', last_name: 'Frecka', email: 'nfrecka@gmail.com', password: 'caketime') }
-  let!(:book) { Book.create!(title: 'kafka', author: 'meta') }
+  let!(:book) { Book.create!(user_id: user.id, title: 'kafka', author: 'meta') }
 
 	it 'upvote should add one to total vote count' do
 		visit root_path
@@ -72,7 +72,7 @@ feature 'Voting on books' do
     fill_in 'password', with: "caketime"
     click_on 'Login'
 		visit user_book_path(user.id, book.id)
-		click_on 'UP'
+		click_on '↑'
 		expect(page).to have_content(1)
 	end
 
@@ -82,8 +82,8 @@ feature 'Voting on books' do
     fill_in 'password', with: "caketime"
     click_on 'Login'
 		visit user_book_path(user.id, book.id)
-		click_on 'UP'
-		click_on 'DOWN'
+		click_on '↑'
+		click_on '↓'
 		expect(page).to have_content(0)
 	end
 end

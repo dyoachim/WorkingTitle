@@ -1,6 +1,8 @@
-<h1>Recent books page!</h1>
+<center>
+<h1 class='titleize'>Books by upload date.</h1>
 <% if @recent_books.any? %>
   <% @recent_books.each do |book| %>
-    <p><%= book.title %> <%= book.created_at.localtime.strftime('%H:%M %m/%d/%Y') %></p>
+    <p><%= link_to book.title.titleize, user_book_path(User.find(book.user_id), book) %> <%= book.created_at.localtime.strftime('%H:%M %m/%d/%Y') %></p>
   <% end %>
 <% end %>
+</center>
