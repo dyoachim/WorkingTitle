@@ -16,6 +16,14 @@
 body {
   margin: 0;
   font-size: 1.2em;
+  font-family: sans-serif;
+}
+
+th {
+  background-color: #2C82D9;
+  padding-left: 10px;
+  border-radius: 10px 10px 10px;
+  font-family: serif;
 }
 
 td {
@@ -23,22 +31,18 @@ td {
   padding: 0 30px;
 }
 
-td h2, td h3, td h4 {
-  margin: 5px 0;
-}
-
 li table {
   margin: 0 30px;
 }
 
 .d3_bubble {
-  width: 55%;
+  padding-left: 10%;
+  width: 45%;
   height: 450px;
-  background-color: orange;
 }
 
 .content {
-  margin: 8px;
+  margin: 0 auto;
   width: 100%;
 }
 
@@ -57,9 +61,19 @@ li table {
   width: 80%;
 }
 
+.comment_header {
+  background-color: #2C82D9;
+  width: 79%;
+  margin-left: 12px;
+  padding: 18px 0 0 8px;
+  height: 55px;
+  border-radius: 10px 10px 10px;
+}
+
 nav {
   background-color: #2C82D9;
   padding-bottom: 0.3em;
+  font-family: serif;
 }
 
 span {
@@ -67,12 +81,17 @@ span {
   padding-left: 0.2em;
 }
 
-nav a {
+nav a, .comment_header a, th a {
   color: #eee;
   text-decoration: none;
 }
 
-nav a:hover {
+a {
+  color:#2C82D9;
+  text-decoration: none;
+}
+
+a:hover {
   color: #53DEFB;
 }
 
@@ -90,10 +109,18 @@ section {
   display: inline-block;
 }
 
+.titleize {
+  font-family: serif;
+}
 
 
 .login_nav {
   float: right;
+}
+
+.add_book {
+  float: right;
+  padding: 5px;
 }
 
 @media (max-width: 400px) {
