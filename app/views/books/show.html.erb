@@ -6,12 +6,16 @@
 			<p class='vote_count' id='<%= @book.id %>'>
 				Score: <%= @book.votes.sum('up_or_down')%>
 			</p>
-		<% else %>
+		<% elsif session[:current_user_id] != nil %>
 			<button class='upvote'>↑</button>
 			<p class='vote_count' id='<%= @book.id %>'>
 				Score: <%= @book.votes.sum('up_or_down')%>
 			</p>
 			<button class='downvote'>↓</button>
+    <% else %>
+      <p class='vote_count' id='<%= @book.id %>'>
+        Score: <%= @book.votes.sum('up_or_down')%>
+      </p>
 		<% end %>
 	</h3>
 </header>

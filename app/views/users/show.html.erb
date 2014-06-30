@@ -1,8 +1,8 @@
 <center><h1 class='titleize'><%= @user.first_name.capitalize %></h1></center>
 
-<% if @user.books.any? %>
-  <table>
-    <tr><th colspan='4' align='left';><h2 class='comment_header'>Books: <%= @user.books.count %> <div class='add_book'><%= link_to "Add?", new_user_book_path(@user) %></div></h2></th></tr>
+<table>
+  <tr><th colspan='4' align='left';><h2 class='comment_header'>Books: <%= @user.books.count %> <div class='add_book'><%= link_to "Add?", new_user_book_path(@user) %></div></h2></th></tr>
+  <% if @user.books.any? %>
     <% @user.books.each do |book| %>
       <tr>
         <td><h3><%= link_to book.title.titleize, user_book_path(@user, book) %></h3></td>
@@ -11,24 +11,24 @@
         <td><h4><%= book.word_count %> words</h4></td>
       </tr>
     <% end %>
-  </table>
-<% else %>
-  <p>No books</p>
-<% end %>
+  <% else %>
+    <tr><td>No books</td></tr>
+  <% end %>
+</table>
 
 
 <h2 class='comment_header'>Comments: <%= @user.comments.count %></h2>
 
-<% if @user.comments.any? %>
-  <% @user.comments.each do |comment| %>
-    <table class='comment_table'>
-      <tr>
-        <td><%= link_to comment.commenter.first_name.titleize, comment.commenter %> commented on <%= link_to comment.book.title.titleize, user_book_path(User.find(comment.book.user_id), comment.book) %> on <%= comment.created_at.localtime.strftime('%H:%M %m/%d/%Y') %>
-      </td>
-      </tr>
-      <tr><td><%= comment.comment_text %><td></tr>
-    </table>
+<table class='comment_table'>
+  <% if @user.comments.any? %>
+    <% @user.comments.each do |comment| %>
+        <tr>
+          <td><%= link_to comment.commenter.first_name.titleize, comment.commenter %> commented on <%= link_to comment.book.title.titleize, user_book_path(User.find(comment.book.user_id), comment.book) %> on <%= comment.created_at.localtime.strftime('%H:%M %m/%d/%Y') %>
+        </td>
+        </tr>
+        <tr><td><%= comment.comment_text %><td></tr>
+    <% end %>
+  <% else %>
+    <tr><td>No comments</td></tr>
   <% end %>
-<% else %>
-  <p>No comments</p>
-<% end %>
+</table>
